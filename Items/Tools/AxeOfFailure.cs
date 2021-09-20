@@ -6,42 +6,41 @@ namespace Gecko.Items.Tools
 {
     public class AxeOfFailure : ModItem
     {
-        public override void SetStaticDefaults()  //Sets the description of the item
+        public override void SetStaticDefaults()  //Sets the description of the Item
         {
             DisplayName.SetDefault("Axe of Failure");
             Tooltip.SetDefault("Demonite+ Axe");
 
         }
-        public override void SetDefaults() //sets default stats/information of the item
+        public override void SetDefaults() //sets default stats/information of the Item
         {
 
-            item.damage = 9;
-            item.axe = 13;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.useStyle = 1;
-            item.knockBack = 6;
-            item.rare = 3;
+            Item.axe = 13;
+            Item.damage = 9;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 15;
+            Item.knockBack = 6;
+            Item.useAnimation = 15;
+            Item.rare = ItemRarityID.Orange;
+            Item.useStyle = ItemUseStyleID.Swing;
 
-            item.melee = true;
-            item.channel = true;
-            item.autoReuse = true;
+            Item.DamageType = DamageClass.Melee;
+            Item.channel = true;
+            Item.autoReuse = true;
 
-            item.value = Item.buyPrice(0, 20, 0, 0);
-            item.UseSound = SoundID.Item1;
+            Item.value = Item.buyPrice(0, 20, 0, 0);
+            Item.UseSound = SoundID.Item1;
         }
-        public override void AddRecipes()  //Sets the recipe of the given item
+        public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("IronBar", 12);
-            recipe.AddRecipeGroup("Geckos:CopTin", 12);
-            recipe.AddIngredient(ItemID.GoldAxe, 1);
-            recipe.AddTile(TileID.Furnaces);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddRecipeGroup("Geckos:CopTin", 12)
+                .AddRecipeGroup(ItemID.Wood, 12)
+                .AddIngredient(ItemID.GoldAxe, 1)
+                .AddTile(TileID.Furnaces)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }

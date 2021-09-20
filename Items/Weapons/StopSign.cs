@@ -13,30 +13,29 @@ namespace Gecko.Items.Weapons
         }
         public override void SetDefaults()
         {/*                         Values TBD
-            item.damage = ;
-            item.crit = ;
-			item.width = ;
-			item.height = ;
-			item.useTime = ;
-			item.useAnimation = ;
-			item.useStyle = 1;
-			item.knockBack = ;
-			item.value = ;*/
-            item.rare = 3;
-            item.melee = true;
-            item.autoReuse = true;
-            item.UseSound = SoundID.Item1;
+            Item.damage = ;
+            Item.crit = ;
+			Item.width = ;
+			Item.height = ;
+			Item.useTime = ;
+			Item.useAnimation = ;
+			Item.useStyle = 1;
+			Item.knockBack = ;
+			Item.value = ;*/
+            Item.rare = ItemRarityID.Orange;
+            Item.DamageType = DamageClass.Melee;
+            Item.autoReuse = true;
+            Item.UseSound = SoundID.Item1;
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Chain, 4);
-            recipe.AddIngredient(mod, "Octagon", 8);
-            recipe.AddIngredient(mod, "IronPole",1);
-            recipe.AddTile(TileID.AdamantiteForge);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient(ItemID.Chain, 4)
+                .AddIngredient<Crafting.IronPole>()
+                .AddIngredient<Octagon>()
+                .AddTile(TileID.AdamantiteForge)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

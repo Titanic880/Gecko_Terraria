@@ -13,26 +13,22 @@ namespace Gecko.Items.Tools
         }
         public override void SetDefaults()
         {
-            item.pick = 35;
-            item.axe = 35;
-            item.useTime = 24;
-            item.useAnimation = 24;
-            item.useStyle = 5;
-            
-            item.melee = false;
-            item.ranged = false;
-            item.autoReuse = true;
+            Item.pick = 35;
+            Item.axe = 35;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+
+            Item.DamageType = DamageClass.Melee;
+            Item.autoReuse = true;
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("Wood", 20);
-
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.AddTile(TileID.Sawmill);
-            
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddRecipeGroup("Wood", 20)
+                .AddTile(TileID.WorkBenches)
+                .AddTile(TileID.Sawmill)
+                .Register();
         }
     }
 }

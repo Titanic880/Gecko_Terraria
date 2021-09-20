@@ -6,7 +6,7 @@ namespace Gecko.Items.Weapons
 {
     public class Octagon : ModItem
     {
-        public override void SetStaticDefaults()  //Sets the description of the item
+        public override void SetStaticDefaults()  //Sets the description of the Item
         {
             DisplayName.SetDefault("Octagon");
             Tooltip.SetDefault("8 Fantastic Sides");
@@ -14,13 +14,12 @@ namespace Gecko.Items.Weapons
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("IronBar", 4);
-            recipe.AddIngredient(mod, "SignShard", 8);
-            recipe.AddTile(TileID.AdamantiteForge);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddIngredient<Crafting.SignShard>(8)
+                .AddRecipeGroup("IronBar", 4)
+                .AddTile(TileID.AdamantiteForge)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

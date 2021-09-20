@@ -15,11 +15,10 @@ namespace Gecko.Items.Crafting
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("Geckos:TitAdam", 6);
-            recipe.AddTile(TileID.Furnaces);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddRecipeGroup("Geckos:TitAdam", 6)
+                .AddTile(TileID.Furnaces)
+                .Register();
         }
     }
 }

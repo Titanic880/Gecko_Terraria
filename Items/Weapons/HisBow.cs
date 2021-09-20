@@ -12,38 +12,34 @@ namespace Gecko.Items.Weapons
         }
         public override void SetDefaults()
         {
-            item.damage = 6;
-            item.width = 12;
-            item.height = 24;
-            item.useTime = 25;
-            item.useAnimation = 25;
-            item.useStyle = 5;
-            item.value = 50;
-            item.shoot = 1;
-            item.rare = 2;
+            Item.damage = 6;
+            Item.width = 12;
+            Item.height = 24;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.value = 50;
+            Item.shoot = ProjectileID.WoodenArrowFriendly;
+            Item.rare = ItemRarityID.Green;
 
-            item.knockBack = 0.5f;
-            item.shootSpeed = 7.5f;
-            
-            item.melee = false;
-            item.ranged = true;
-            item.autoReuse = true;
-            
-            item.useAmmo = AmmoID.Arrow;
-            item.UseSound = SoundID.Item5;
+            Item.knockBack = 0.5f;
+            Item.shootSpeed = 7.5f;
+
+            Item.DamageType = DamageClass.Ranged;
+            Item.autoReuse = true;
+
+            Item.useAmmo = AmmoID.Arrow;
+            Item.UseSound = SoundID.Item5;
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("IronBar", 12);
-            recipe.AddRecipeGroup("Geckos:CopTin", 12);
-            recipe.AddRecipeGroup("Geckos:Bow", 1);
-
-            recipe.AddTile(TileID.Furnaces);
-            recipe.AddTile(TileID.Anvils);
-
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe()
+                .AddRecipeGroup("IronBar", 12)
+                .AddRecipeGroup("Geckos:CopTin", 12)
+                .AddRecipeGroup("Geckos:Bow", 1)
+                .AddTile(TileID.Furnaces)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
     }
 }
